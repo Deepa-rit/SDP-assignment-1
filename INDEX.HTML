@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ShopZone – Product Catalog</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f4f6f8;
+}
+
+header{
+    background:#1e293b;
+    color:white;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    width:40px;
+    height:40px;
+    object-fit:contain;
+}
+
+.cart{
+    font-size:18px;
+}
+
+.filters{
+    background:white;
+    padding:20px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.filters input,
+.filters select{
+    padding:8px;
+    font-size:14px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:20px;
+    padding:30px;
+}
+
+.product{
+    background:white;
+    padding:15px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.product img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    border-radius:6px;
+}
+
+.product h3{
+    margin:10px 0 5px;
+    font-size:16px;
+}
+
+.product p{
+    margin:5px 0;
+    color:#555;
+}
+
+.product button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.product button:hover{
+    background:#1d4ed8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <!-- 🔗 Replace src with your logo URL -->
+        <img src="https://media.istockphoto.com/id/1173276043/vector/house-flipper-design-inspiration-with-initial-f.jpg?s=612x612&w=0&k=20&c=LqziBUso0r4fV3_U96rLsm5SoH7W6FbHXc7I7KBIqXQ=">
+        <h2>ShopZone</h2>
+    </div>
+    <div class="cart">Cart Items: <span id="cartCount">0</span></div>
+</header>
+
+<!-- FILTERS -->
+<div class="filters">
+    <input type="text" id="searchInput" placeholder="Search product">
+
+    <select id="categoryFilter">
+        <option value="all">All Categories</option>
+        <option value="fashion">Fashion</option>
+        <option value="sports">Sports</option>
+        <option value="electronics">Electronics</option>
+        <option value="books">Books</option>
+        <option value="beauty">Beauty</option>
+        <option value="home">Home</option>
+        <option value="accessories">Accessories</option>
+        <option value="more">More</option>
+    </select>
+
+    <input type="number" id="minPrice" placeholder="Min Price">
+    <input type="number" id="maxPrice" placeholder="Max Price">
+</div>
+
+<!-- PRODUCTS -->
+<div class="products">
+
+    <!-- EXISTING + NEW PRODUCTS (23 TOTAL) -->
+
+    <!-- Fashion -->
+     <!-- Fashion -->
+<div class="product" data-category="fashion" data-price="899" data-name="women top">
+    <img src="https://plus.unsplash.com/premium_photo-1690350731538-57344931ac02?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    <h3>Women Top</h3><p>₹899</p><button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<div class="product" data-category="fashion" data-price="1199" data-name="men shirt">
+    <img src="https://images.unsplash.com/photo-1593032465175-481ac7f401a0">
+    <h3>Men Shirt</h3><p>₹1199</p><button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<!-- Sports -->
+<div class="product" data-category="sports" data-price="799" data-name="football">
+    <img src="https://media.istockphoto.com/id/91712739/photo/soccer-ball.jpg?s=1024x1024&w=is&k=20&c=gFtFKK73WQFKUpb4Pk6vA2Cp0OLOcZmykraqi45rttk=">
+    <h3>Football</h3><p>₹799</p><button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<div class="product" data-category="sports" data-price="999" data-name="badminton racket">
+    <img src="https://media.istockphoto.com/id/1761333789/photo/badminton-shuttlecocks-and-racket-placed-in-the-corner-of-a-synthetic-field.jpg?s=1024x1024&w=is&k=20&c=Q-QaskcgC-52UkLwx3WdCVTewFrWRU4CjZg4_BCWLPI=">
+    <h3>Badminton Racket</h3><p>₹999</p><button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<!-- Electronics -->
+<div class="product" data-category="electronics" data-price="54999" data-name="laptop">
+    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+    <h3>Laptop</h3><p>₹54,999</p><button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<div class="product" data-category="electronics" data-price="4999" data-name="tablet">
+    <img src="https://media.istockphoto.com/id/1349192951/photo/black-and-white-tablets-on-white.jpg?s=1024x1024&w=is&k=20&c=xrLCJ6Ha-i9kZIyWLmGOKR3bdlE55kkk_w8oDjTUF0Q=">
+    <h3>Tablet</h3><p>₹4,999</p><button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<!-- Books -->
+<div class="product" data-category="books" data-price="599" data-name="data structures book">
+    <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765">
+    <h3>Data Structures</h3><p>₹599</p><button onclick="addToCart()">Add to Cart</button>
+</div>
+
+
+
+<!-- Beauty -->
+<div class="product" data-category="beauty" data-price="399" data-name="face wash">
+    <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908">
+    <h3>Face Wash</h3><p>₹399</p><button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<div class="product" data-category="beauty" data-price="599" data-name="hair serum">
+    <img src="https://media.istockphoto.com/id/1410875402/photo/vitamin-c-serum-in-a-bottle-with-a-pipette-on-a-round-dish-the-concept-of-anti-acid-autumn.jpg?s=612x612&w=0&k=20&c=wtPFJUeF9qU5W2AGfELR0cBQuXxM4IVqii6Rv3mqh1U=">
+    <h3>Hair Serum</h3><p>₹599</p><button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<!-- Home -->
+<div class="product" data-category="home" data-price="899" data-name="wall clock">
+    <img src="https://media.istockphoto.com/id/597276512/photo/wall-clock-isolated-on-white-ten-past-ten.jpg?s=612x612&w=0&k=20&c=lKvvdbmDXzEDA8SobtWTraysYFAhbFENDrZdbmv36Zk=">
+    <h3>Wall Clock</h3><p>₹899</p><button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<div class="product" data-category="home" data-price="1499" data-name="bed lamp">
+    <img src="https://media.istockphoto.com/id/1081960478/photo/the-lamp-against-the-background-of-the-bed-night-time.jpg?s=612x612&w=0&k=20&c=RIHAetzUhHsqXkH1agpAyEAJZkw80MclD7yajKRrBCQ=">
+    <h3>Bed Lamp</h3><p>₹1499</p><button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<!-- Accessories -->
+<div class="product" data-category="accessories" data-price="499" data-name="wallet">
+    <img src="https://media.istockphoto.com/id/90696338/photo/purse-with-money.jpg?s=612x612&w=0&k=20&c=cX7BjT06CY__sUjSXkfIN7nUhhyDLAGjwcV0fbZIgnM=">
+    <h3>Wallet</h3><p>₹499</p><button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<div class="product" data-category="accessories" data-price="799" data-name="cap">
+    <img src="https://media.istockphoto.com/id/1451763647/photo/blue-baseball-cap.jpg?s=612x612&w=0&k=20&c=OhaJCq02EKoc0G11ULclrVj8UwS0DyK2AY6l56I3NUw=">
+    <h3>Cap</h3><p>₹799</p><button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<!-- More -->
+<div class="product" data-category="more" data-price="1299" data-name="travel bag">
+    <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702">
+    <h3>Travel Bag</h3><p>₹1299</p><button onclick="addToCart()">Add to Cart</button>
+</div>
+
+    <div class="product" data-category="fashion" data-price="799" data-name="men t-shirt">
+        <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
+        <h3>Men T-Shirt</h3><p>₹799</p><button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product" data-category="fashion" data-price="1499" data-name="jacket">
+        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5">
+        <h3>Winter Jacket</h3><p>₹1499</p><button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product" data-category="fashion" data-price="999" data-name="jeans">
+        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246">
+        <h3>Blue Jeans</h3><p>₹999</p><button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <!-- Sports -->
+    <div class="product" data-category="sports" data-price="1599" data-name="sports shoes">
+        <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb">
+        <h3>Sports Shoes</h3><p>₹1599</p><button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product" data-category="books" data-price="349" data-name="c programming book">
+    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f">
+    <h3>C Programming</h3><p>₹349</p><button onclick="addToCart()">Add to Cart</button>
+</div>
+
+    <div class="product" data-category="sports" data-price="499" data-name="yoga mat">
+        <img src="https://media.istockphoto.com/id/1288409428/photo/woman-rolling-up-exercise-mat-and-preparing-doing-yoga-or-fitness.jpg?s=612x612&w=0&k=20&c=OjNTW9PpV9VJ6sHwaz_DMXska0Nlktp41O-hidRApsA=">
+        <h3>Yoga Mat</h3><p>₹499</p><button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <!-- Electronics -->
+    <div class="product" data-category="electronics" data-price="24999" data-name="smartphone">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+        <h3>Smartphone</h3><p>₹24999</p><button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product" data-category="electronics" data-price="2999" data-name="bluetooth speaker">
+        <img src="https://media.istockphoto.com/id/1345322275/photo/close-up-on-hand-using-phone-connecting-speaker-bluetooth.jpg?s=612x612&w=0&k=20&c=ND6uoV2CkYaoMFEGju8M8UnJEFnvNQaCas8U6g11q7s=">
+        <h3>Bluetooth Speaker</h3><p>₹2999</p><button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product" data-category="electronics" data-price="3999" data-name="smart watch">
+        <img src="https://media.istockphoto.com/id/1286099942/photo/close-up-of-hand-touching-smartwatch-with-health-app-on-the-screen-gadget-for-fitness-active.jpg?s=612x612&w=0&k=20&c=zX9Fko_T6qppRO8J8BSYu4DovmLjPFKwi_x6l0GzCq0=">
+        <h3>Smart Watch</h3><p>₹3999</p><button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <!-- Books -->
+    <div class="product" data-category="books" data-price="299" data-name="html css book">
+        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794">
+        <h3>HTML & CSS</h3><p>₹299</p><button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product" data-category="books" data-price="499" data-name="python book">
+        <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353">
+        <h3>Python Programming</h3><p>₹499</p><button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <!-- Home -->
+    <div class="product" data-category="home" data-price="1299" data-name="coffee maker">
+        <img src="https://media.istockphoto.com/id/1366747135/photo/a-womans-hand-pours-coffee-from-a-coffee-pot-into-a-cup-home-life-electric-coffee-maker-on.jpg?s=612x612&w=0&k=20&c=xq2eYZglFWVG23g02udJO8N5dPdTHelcJ2ZW385LrEI=">
+        <h3>Coffee Maker</h3><p>₹1299</p><button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <!-- Accessories -->
+    <div class="product" data-category="accessories" data-price="699" data-name="sunglasses">
+        <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083">
+        <h3>Sunglasses</h3><p>₹699</p><button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <!-- More -->
+    <div class="product" data-category="more" data-price="349" data-name="water bottle">
+        <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8">
+        <h3>Water Bottle</h3><p>₹349</p><button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+</div>
+
+<script>
+let cartCount = 0;
+function addToCart(){
+    cartCount++;
+    document.getElementById("cartCount").innerText = cartCount;
+}
+
+const categoryFilter = document.getElementById("categoryFilter");
+const minPriceInput = document.getElementById("minPrice");
+const maxPriceInput = document.getElementById("maxPrice");
+const searchInput = document.getElementById("searchInput");
+const products = document.querySelectorAll(".product");
+
+function filterProducts(){
+    const category = categoryFilter.value;
+    const min = minPriceInput.value || 0;
+    const max = maxPriceInput.value || Infinity;
+    const search = searchInput.value.toLowerCase();
+
+    products.forEach(p=>{
+        const match =
+            (category==="all" || p.dataset.category===category) &&
+            p.dataset.price>=min && p.dataset.price<=max &&
+            p.dataset.name.includes(search);
+
+        p.style.display = match ? "block" : "none";
+    });
+}
+
+categoryFilter.onchange = filterProducts;
+minPriceInput.oninput = filterProducts;
+maxPriceInput.oninput = filterProducts;
+searchInput.oninput = filterProducts;
+</script>
+
+</body>
+</html>
